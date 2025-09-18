@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wedding Invitation | Kaimook & Pok</title>
+  <meta name="description" content="Wedding web invitation" />
+
+  <!-- THEME -->
+  <style>
+    :root{
+      --primary:#4480c8;   /* ฟ้าเข้ม */
+      --secondary:#a7caec; /* ฟ้าอ่อน */
+      --muted:#d9d9d9;     /* เทาอ่อน */
+      --accent:#d4ae5a;    /* ทอง */
+      --text:#222;
+      --bg:#fff;
+    }
+
+    /* Reset */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;line-height:1.6;color:var(--text);background:var(--bg)}
+    img{max-width:100%;display:block}
+    a{color:inherit}
+    button{font:inherit}
+
+    /* Utilities */
+    .container{width:min(1100px,92%);margin-inline:auto}
+    .btn{display:inline-block;padding:.7rem 1.25rem;border-radius:999px;border:0;cursor:pointer;transition:.2s}
+    .btn-primary{background:var(--primary);color:#fff}
+    .btn-primary:hover{filter:brightness(.9)}
+    .btn-accent{background:var(--accent);color:#fff}
+    .btn-accent:hover{filter:brightness(.92)}
+    .card{background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08);padding:1.25rem}
+    .section{padding:64px 0}
+    .section-title{font-size:clamp(1.4rem,2.5vw,1.9rem);color:var(--primary);margin:0 0 .75rem}
+    .muted{color:#555}
+    .grid{display:grid;gap:1rem}
+
+    /* Hero */
+    .hero{position:relative;min-height:80vh;display:grid;place-items:center;text-align:center;background:
+      linear-gradient(180deg,rgba(68,128,200,.55),rgba(68,128,200,.45)),
+      url('./picture/LINE_ALBUM_🤍_250708_5.jpg') center/cover no-repeat; color:#fff}
+    .hero h1{font-size:clamp(2rem,6vw,3.2rem);margin:.25rem 0}
+    .hero .names{font-weight:700;letter-spacing:.5px;color:#fff}
+    .hero .date{font-size:1.1rem;color:#fff}
+    .hero .cta{margin-top:1.2rem}
+
+    /* Countdown */
+    .countdown{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:1rem}
+    .timebox{background:rgba(255,255,255,.95);color:#000;border-radius:14px;padding:.7rem 1rem;min-width:84px}
+    .timebox .num{font-size:1.4rem;font-weight:700;display:block}
+    .timebox .lbl{font-size:.8rem;color:#666}
+
+    /* Details */
+    .details{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .detail-item{position:relative;overflow:hidden}
+    .detail-item h3{margin:.25rem 0;color:var(--accent)}
+    .badge{display:inline-block;background:var(--secondary);color:#133355;padding:.2rem .6rem;border-radius:999px;font-size:.8rem}
+
+    /* Timeline */
+    .timeline{border-left:3px solid var(--secondary);padding-left:1rem;margin-left:.5rem}
+    .tl-item{position:relative;margin:1rem 0}
+    .tl-item::before{content:"";position:absolute;left:-1.22rem;top:.2rem;width:.8rem;height:.8rem;border-radius:50%;background:var(--accent)}
+
+    /* Gallery */
+    .gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 5px;
+}
+
+/* reset base */
+.g {
+  overflow: hidden;
+  border-radius: 12px;
+}
+.g img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform .3s;
+}
+.g:hover img {
+  transform: scale(1.05);
+}
+
+/* layout */
+.g-1 {
+  grid-column: span 18; /* ครึ่งซ้าย */
+  grid-row: span 2;    /* สูง 2 แถว */
+  /* aspect-ratio: 3/4; */
+}
+
+.g-2 {
+  grid-column: span 6; /* ขวาบนเล็ก */
+  /* aspect-ratio: 1/1; */
+}
+
+.g-3 {
+  grid-column: span 6; /* ขวาบนเล็กอีก */
+  /* aspect-ratio: 10/16; */
+}
+
+.g-4 {
+  grid-column: 1 / span 8; /* กลางล่าง */
+  /* aspect-ratio: 3/4; */
+}
+
+.g-5 {
+  grid-column: 9 / span 4; /* ขวาล่างใหญ่ */
+  /* aspect-ratio: 16/9 ; */
+}
+.g-6 {
+  grid-column: 1 / span 4; /* ซ้ายล่างใหญ่ */
+}
+.g-7 {
+  grid-column: 5 / span 4; /* กลางล่างใหญ่ */
+}
+.g-8 {
+  grid-column: 9 / span 4; /* ขวาล่างใหญ่ */
+}
+
+
+    @media (max-width:720px){
+      .g-1,.g-2,.g-3,.g-4,.g-5{grid-column:1/-1}
+    }
+
+    /* RSVP */
+    form.rsvp{display:grid;gap:.9rem}
+    .field{display:grid;gap:.35rem}
+    .field label{font-size:.9rem;color:#333}
+    .field input,.field select,.field textarea{padding:.7rem .8rem;border:1px solid var(--muted);border-radius:10px;font:inherit}
+    .field textarea{min-height:110px}
+
+    /* Gift */
+    .gift-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .qr{display:grid;place-items:center;background:#fff;border:1px dashed var(--muted);border-radius:12px;padding:1rem}
+
+    /* Map */
+    .mapcard{display:grid;gap:1rem}
+
+    /* Footer */
+    footer{background:var(--primary);color:#fff;padding:40px 0;text-align:center}
+    footer p{margin:.25rem 0}
+
+    /* Back-to-top */
+    .to-top{position:fixed;right:14px;bottom:14px;z-index:50}
+
+    .footer1{  
+        align-items: flex-start;
+        text-align: start;
+        padding: 9rem;
+        background-image: url('../picture/LINE_ALBUM_🤍_250708_22.jpg');
+        background-blend-mode: multiply;
+        background-position: center;
+        color: #121212;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- HERO / COVER -->
+  <header class="hero" id="home" role="banner" aria-label="Wedding Cover">
+    <div class="container">
+      <span class="badge">You're invited</span>
+      <h1 class="names">Kaimook &amp; Pok</h1>
+      <p class="date">• 1 November 2025 • </p>
+
+      <!-- Countdown -->
+      <div id="countdown" class="countdown" aria-live="polite">
+        <div class="timebox"><span class="num" id="cd-days">0</span><span class="lbl">Days</span></div>
+        <div class="timebox"><span class="num" id="cd-hours">0</span><span class="lbl">Hours</span></div>
+        <div class="timebox"><span class="num" id="cd-mins">0</span><span class="lbl">Minutes</span></div>
+        <div class="timebox"><span class="num" id="cd-secs">0</span><span class="lbl">Seconds</span></div>
+      </div>
+
+      <div class="cta">
+        <a href="#rsvp" class="btn btn-accent">ยืนยันเข้าร่วม (RSVP)</a>
+        <a href="#details" class="btn btn-primary">ดูรายละเอียดงาน</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- INVITE MESSAGE -->
+  <section class="section" id="invite">
+    <div class="container grid" style="grid-template-columns:1.1fr 1fr;align-items:center;gap:2rem">
+      <div>
+        <h2 class="section-title">คำเชิญ</h2>
+        <p class="muted">ขอเรียนเชิญร่วมเป็นเกียรติในพิธีมงคลสมรสของเรา</p>
+        <p>ด้วยความปลาบปลื้มยินดี เราสองคนขอเชิญทุกท่านมาร่วมเป็นสักขีพยานและแบ่งปันช่วงเวลาสำคัญในชีวิตของเรา</p>
+        <div style="margin-top:.75rem">
+          <a class="btn btn-primary" href="https://maps.app.goo.gl/6pxSjStgp3ddmk8j6">เปิดแผนที่</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="./picture/LINE_ALBUM_🤍_250708_9.jpg" alt="รูปคู่บ่าวสาว" />
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="section" id="details">
+    <div class="container">
+      <h2 class="section-title">รายละเอียดงาน</h2>
+      <div class="grid details">
+        <div class="card detail-item">
+          <span class="badge">พิธีเช้า</span>
+          <h3>พิธีสงฆ์</h3>
+          <p class="muted">06:39 น. </p>
+        </div>
+        <div class="card detail-item">
+          <span class="badge">ขบวนขันหมาก</span>
+          <h3>แห่ขันหมาก</h3>
+          <p class="muted">09:09 น.</p>
+        </div>
+        <div class="card detail-item">
+          <span class="badge">พิธีหลั่งน้ำ</span>
+          <h3>พิธีรดน้ำสังข์</h3>
+          <p class="muted">10:39 น.</p>
+        </div>
+        <div class="card detail-item">
+          <span class="badge">งานเลี้ยง</span>
+          <h3>โต๊ะจีน</h3>
+          <p class="muted">18:00 น.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- GALLERY -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <h2 class="section-title">Gallery</h2>
+      <div class="grid gallery">
+        <figure class="g g-1"><img src="./picture/LINE_ALBUM_🤍_250708_10.jpg" alt="ภาพพรีเวดดิ้ง 1"></figure>
+        <figure class="g g-2"><img src="./picture/LINE_ALBUM_🤍_250708_11.jpg" alt="ภาพพรีเวดดิ้ง 2"></figure>
+        <figure class="g g-3"><img src="./picture/LINE_ALBUM_🤍_250708_14.jpg" alt="ภาพพรีเวดดิ้ง 3"></figure>
+        <figure class="g g-4"><img src="./picture/LINE_ALBUM_🤍_250708_20.jpg" alt="ภาพพรีเวดดิ้ง 4"></figure>
+        <figure class="g g-5"><img src="./picture/LINE_ALBUM_🤍_250708_8.jpg" alt="ภาพพรีเวดดิ้ง 5"></figure>
+        
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP / LOCATION -->
+  <section class="section" id="map" style="background:linear-gradient(180deg,#eef5ff,#ffffff)">
+    <div class="container grid mapcard" style="grid-template-columns:1.2fr 1fr">
+      <div>
+        <h2 class="section-title">สถานที่จัดงาน</h2>
+        <!-- <p><strong>บ้าน</strong></p> -->
+        <p class="muted">ณ บ้านเลขที่ 99/2 ม.9 ต.คลองอุดมชลจร อ.เมือง จ.ฉะเชิงเทรา</p>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.5rem">
+          <a class="btn btn-primary" target="_blank" rel="noopener" href="https://maps.app.goo.gl/6pxSjStgp3ddmk8j6">เปิดใน Google Maps</a>
+          <button class="btn btn-accent" id="btn-qr">QR เส้นทาง</button>
+        </div>
+      </div>
+      <div class="card qr">
+        <img id="qr-map" src="./picture/qr-map.png" alt="QR Code แผนที่" style="max-width:220px"/>
+        <small class="muted">สแกนเพื่อดูเส้นทาง</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="section" id="rsvp">
+    <div class="container">
+      <h2 class="section-title">ยืนยันการเข้าร่วม (RSVP)</h2>
+      <form class="card rsvp" id="rsvpForm">
+        <div class="field">
+          <label for="name">ชื่อ-นามสกุล</label>
+          <input id="name" name="entry.1177321719" type="text" required />
+        </div>
+        <div class="field">
+          <label for="guests">จำนวนผู้ร่วมงาน</label>
+          <select id="guests" name="entry.396765670">
+            <option>1</option><option>2</option><option>3</option><option>4+</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="attend">การเข้าร่วม</label>
+          <select id="attend" name="entry.1457713942">
+            <option>เข้าร่วม</option>
+            <option>ไม่สะดวก</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="msg">ข้อความถึงบ่าวสาว (ถ้ามี)</label>
+          <textarea id="msg" name="entry.332324037" placeholder="ฝากคำอวยพร"></textarea>
+        </div>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+          <button class="btn btn-primary" type="submit">ส่งคำตอบ</button>
+          <button class="btn" type="reset" style="background:#f3f3f3">ล้างแบบฟอร์ม</button>
+        </div>
+        <small class="muted">* ข้อมูลจะถูกส่งไป Google Forms โดยอัตโนมัติ</small>
+      </form>
+    </div>
+  </section>
+<!-- <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdAUd3pPQJnac-OJ7fiPtG_5smmpKr62iuNCQGKwWpY4C3ItQ/viewform?embedded=true" width="640" height="982" frameborder="0" marginheight="0" marginwidth="0">กำลังโหลด…</iframe> -->
+  <!-- GIFT / EWALLET -->
+  <section class="section" id="gift" style="background:linear-gradient(180deg,#fff,#f9f7f2)">
+    <div class="container">
+      <h2 class="section-title">ของขวัญ / ซองออนไลน์</h2>
+      <div class="grid gift-grid">
+        <div class="card">
+          <h3>บัญชีธนาคาร</h3>
+          <p class="muted">ธ.กสิกรไทย • 121-8-85562-4 (นริศรา บำรุงวงษ์)</p>
+        </div>
+        <div class="qr">
+          <img src="./picture/qrpayment.png" alt="QR PromptPay" style="max-width:220px"/>
+          <small class="muted">สแกนเพื่อโอน</small>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="footer1" style="margin-bottom:40px; ">
+    <p> <strong>Mook& Pok</strong></p>
+    <p><strong>01.11.2025</strong></p>
+    <p><strong>See you there!</strong></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>ขอบคุณที่ร่วมยินดีกับเรา</p>
+      <p>© 2025 Kaimook &amp; Pok</p>
+      <p><a href="#home" class="btn" style="background:#ffffff22;color:#fff">กลับไปด้านบน</a></p>
+    </div>
+  </footer>
+
+  <a href="#home" class="btn btn-accent to-top" aria-label="Back to top">↑</a>
+
+  <!-- SCRIPTS -->
+  <script>
+    // ===== Countdown =====
+    // ตั้งวันงาน (ปี, เดือน-1, วัน, ชั่วโมง, นาที)
+    const weddingDate = new Date(2025, 11, 1, 6, 0, 0); // 1 Dec 2025 18:00
+    function tick(){
+      const now = new Date();
+      const diff = Math.max(0, weddingDate - now);
+      const s = Math.floor(diff/1000);
+      const days = Math.floor(s/86400);
+      const hours = Math.floor((s%86400)/3600);
+      const mins = Math.floor((s%3600)/60);
+      const secs = s%60;
+      document.getElementById('cd-days').textContent = days;
+      document.getElementById('cd-hours').textContent = hours;
+      document.getElementById('cd-mins').textContent = mins;
+      document.getElementById('cd-secs').textContent = secs;
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    const rsvpForm = document.getElementById('rsvpForm');
+    rsvpForm.addEventListener('submit',function(e){
+      e.preventDefault();
+      const formData = new FormData(rsvpForm);
+      const params = new URLSearchParams(formData).toString();
+      fetch('https://docs.google.com/forms/d/e/1FAIpQLSdAUd3pPQJnac-OJ7fiPtG_5smmpKr62iuNCQGKwWpY4C3ItQ/formResponse',{
+        method:'POST',
+        mode:'no-cors',
+        headers:{'Content-Type':'application/x-www-form-urlencoded'},
+        body:params
+      }).then(()=>{
+        alert('ส่งคำตอบเรียบร้อยแล้ว! ขอบคุณที่ยืนยันการเข้าร่วม 🎉');
+        rsvpForm.reset();
+        window.location.href='#home';
+      }).catch(err=>{console.error(err);alert('เกิดข้อผิดพลาดในการส่งข้อมูล');});
+    });
+
+    // ===== QR button focus bounce (placeholder) =====
+    document.getElementById('btn-qr').addEventListener('click', ()=>{
+      const el = document.getElementById('qr-map');
+      el.animate([
+        {transform:'scale(1)'},{transform:'scale(1.06)'},{transform:'scale(1)'}
+      ],{duration:400});
+    });
+
+    // ===== Smooth scroll for in-page links =====
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href');
+        if(id.length>1){
+          const target = document.querySelector(id);
+          if(target){
+            e.preventDefault();
+            target.scrollIntoView({behavior:'smooth',block:'start'});
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
